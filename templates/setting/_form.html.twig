@@ -1,0 +1,75 @@
+{% block body %}
+
+    <form  method="post">
+        <div class="box box-info">
+            <h4>Başlık, Tanımlama, Keywords</h4>
+            <div class="box-body">
+                <div class="input-group">
+                    <input type="text" name="setting[Title]" value="{{ setting.Title }}" class="form-control" id="inputName" >
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" name="setting[Description]" value="{{ setting.Description }}" class="form-control" id="inputName">
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" name="setting[Keywords]" value="{{ setting.Keywords }}" class="form-control" id="inputName">
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <h4>Firma Bilgileri</h4>
+                <div class="input-group">
+                    <input type="text" name="setting[FirmName]" value="{{ setting.FirmName }}" class="form-control" id="inputName">
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" name="setting[Address]" value="{{ setting.Address }}" class="form-control" id="inputName">
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" name="setting[Tel]" value="{{ setting.Tel }}" class="form-control" id="inputName">
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" name="setting[Email]" value="{{ setting.Email }}" class="form-control" id="inputName">
+                    <span class="input-group-addon"></span>
+                </div>
+                <h4>Sosyal Medya</h4>
+                <h5>Facebook</h5>
+                <div class="input-group">
+                    <input type="text" name="setting[Facebook]" value="{{ setting.Facebook }}" class="form-control" id="inputName">
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <h5>Twitter</h5>
+                <div class="input-group">
+                    <input type="text" name="setting[Twitter]" value="{{ setting.Twitter }}" class="form-control" id="inputName">
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <h5>Instagram</h5>
+                <div class="input-group">
+                    <input type="text" name="setting[Instagram]" value="{{ setting.Instagram }}" class="form-control" id="inputName">
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <h5>Linkedin</h5>
+                <div class="input-group">
+                    <input type="text" name="setting[Linkedin]" value="{{ setting.Linkedin }}" class="form-control" id="inputName">
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <!-- /input-group -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info">KAYDET</button>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </form>
+{% endblock %}

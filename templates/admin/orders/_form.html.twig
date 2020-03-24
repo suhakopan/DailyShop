@@ -1,0 +1,72 @@
+<form name="order" action="{{ path('orders_new') }}" method="post">
+    <div class="box box-info">
+        <h4>Kişisel Bilgiler</h4>
+        <div class="box-body">
+            <div class="input-group">
+                <input type="text" name="" value="{{ app.user.name }}" class="form-control" id="inputName" placeholder="Ad">
+                <span class="input-group-addon"></span>
+            </div>
+            <br>
+            <div class="input-group">
+                <textarea class="form-control" name="" value=""  rows="3" placeholder="Adresi giriniz..." id="inputAdress">{{ app.user.address }}</textarea>
+                <span class="input-group-addon"></span>
+            </div>
+            <br>
+            <div class="input-group">
+                <input type="text" name="" value="{{ app.user.city }}" class="form-control" id="inputSurname"placeholder="Soyad">
+                <span class="input-group-addon"></span>
+            </div>
+            <br>
+            <h4>İletişim Bilgileri</h4>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                <input type="text" name="" value="{{ app.user.phone }}" class="form-control"  id="inputPhone"  placeholder="05554443322">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                <input type="email" name="" value="{{ app.user.email }}" class="form-control" id="inputEmail" placeholder="E-posta">
+            </div>
+            <br>
+            <h4>Ödeme Bilgileri</h4>
+            <div class="input-group">
+                <input type="text" name="" class="form-control" id="inputSurname"placeholder="Kart Sahibinin Adı ve Soyadı">
+                <span class="input-group-addon"></span>
+            </div>
+            <br>
+            <div class="input-group">
+                <input type="text" name="" class="form-control" id="inputSurname"placeholder="Kart Numarası">
+                <span class="input-group-addon"></span>
+            </div>
+            <br>
+            <div class="input-group">
+                <input type="text" name="" class="form-control" id="inputSurname"placeholder="Son Kullanma Tarihi AY/YIL">
+                <span class="input-group-addon"></span>
+            </div>
+            <br>
+            <div class="input-group">
+                <input type="text" name="" class="form-control" id="inputSurname"placeholder="Güvenlik Kodu (CVC)">
+                <span class="input-group-addon"></span>
+            </div>
+            <br>
+            <div class="input-group">
+                <textarea class="form-control" name="orders[Note]" value=""  rows="3" placeholder="İletmek istediğiniz sipariş notunu yazınız..." id="inputAdress"></textarea>
+                <span class="input-group-addon"></span>
+            </div>
+            <br>
+            <h4>Ödenecek Tutar</h4>
+            <input type="text" name="" value="{{ total|number_format(2,'.',',') }}" readonly/>
+            <input type="hidden" name="" value="{{ tax|number_format(2,'.',',') }}"/>
+            <input type="hidden" name="" value="{{ app.user.id }}"/>
+            <!-- /input-group -->
+            <input type="hidden" name="token" value="{{ csrf_token('form-order') }}"/>
+            <br>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-info">Ödemeyi Tamamla</button>
+                <a href="{{ path('shopcart_index') }}">geri dön</a>
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+</form>
+

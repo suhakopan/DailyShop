@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Setting{% endblock %}
+
+{% block body %}
+    <h1>Setting</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ setting.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ setting.Title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ setting.Description }}</td>
+            </tr>
+            <tr>
+                <th>Keywords</th>
+                <td>{{ setting.Keywords }}</td>
+            </tr>
+            <tr>
+                <th>FirmName</th>
+                <td>{{ setting.FirmName }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ setting.Address }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ setting.Tel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ setting.Email }}</td>
+            </tr>
+            <tr>
+                <th>Facebook</th>
+                <td>{{ setting.Facebook }}</td>
+            </tr>
+            <tr>
+                <th>Twitter</th>
+                <td>{{ setting.Twitter }}</td>
+            </tr>
+            <tr>
+                <th>Instagram</th>
+                <td>{{ setting.Instagram }}</td>
+            </tr>
+            <tr>
+                <th>Linkedin</th>
+                <td>{{ setting.Linkedin }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('setting_index') }}">back to list</a>
+
+    <a href="{{ path('setting_edit', {'id': setting.id}) }}">edit</a>
+
+    {{ include('setting/_delete_form.html.twig') }}
+{% endblock %}

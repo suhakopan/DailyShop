@@ -1,0 +1,50 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block title %}Daily Shop | Ürünler{% endblock %}
+{% block brand %}Ürünler{% endblock %}
+{% block m4 %}<li class="active">{% endblock %}
+    {% block body %}
+
+
+        <div class="table-responsive ">
+            <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>CategoryNo</th>
+                    <th>Başlık</th>
+                    <th>Stok</th>
+                    <th>Fiyat</th>
+                    <th>Göster</th>
+                    <th>Düzenle</th>
+                    <th>Sil</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.CategoryNo }}</td>
+                        <td>{{ product.Title }}</td>
+                        <td>{{ product.Amount }}</td>
+                        <td>{{ product.Price }}</td>
+                        <td> <a href="{{ path('admin_product_show',{'id': product.id}) }}" rel="tooltip" title="Göster" class="btn btn-info btn-simple btn-xs">
+                                <i class="fa fa-check-circle"></i></a>
+                        </td>
+                        <td> <a href="{{ path('admin_product_edit',{'id': product.id}) }}" rel="tooltip" title="Düzenle" class="btn btn-info btn-simple btn-xs">
+                                <i class="fa fa-edit"></i></a>
+                        </td>
+                        <td> <a href="{{ path('admin_product_delete',{'id': product.id}) }}" onclick="return confirm('Silinsin mi?');" rel="tooltip" title="Sil" class="btn btn-danger btn-simple btn-xs">
+                                <i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8">kayıt bulunamadı</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('admin_product_new') }}">Yeni oluştur</a>
+        </div>
+    {% endblock %}

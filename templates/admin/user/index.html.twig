@@ -1,0 +1,45 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block title %}Daily Shop | Üyeler{% endblock %}
+{% block brand %}Üye Listesi{% endblock %}
+{% block body %}
+    {% block m21 %}<li class="active">{% endblock %}
+
+    <div class="table-responsive ">
+        <table class="table table-hover table-striped">
+            <thead>
+            <th>ID</th>
+            <th>Adı Soyadı</th>
+            <th>E-mail</th>
+            <th>Telefon No</th>
+            <th>Şehir</th>
+            <th>Durum</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+            </thead>
+            <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.Name }}</td>
+                <td>{{ user.Email }}</td>
+                <td>{{ user.Phone }}</td>
+                <td>{{ user.City }}</td>
+                {% if user.Status == true %}
+                    <td>aktif</td>
+                {% else %}
+                    <td>pasif</td>
+                {% endif %}
+                <td> <a href="{{ path('admin_user_edit',{'id': user.id}) }}" rel="tooltip" title="Düzenle" class="btn btn-info btn-simple btn-xs">
+                        <i class="fa fa-edit"></i></a>
+                </td>
+                <td> <a href="{{ path('admin_user_delete',{'id': user.id}) }}" onclick="return confirm('Silinsin mi?');" rel="tooltip" title="Sil" class="btn btn-danger btn-simple btn-xs">
+                        <i class="fa fa-times"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block title %}Daily Shop | Kategoriler{% endblock %}
+{% block brand %}Kategoriler{% endblock %}
+{% block body %}
+    {% block m5 %}<li class="active">{% endblock %}
+
+    <div class="table-responsive ">
+        <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Adı</th>
+                <th>Düzenle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gender in genders %}
+            <tr>
+                <td>{{ gender.id }}</td>
+                <td>{{ gender.Name }}</td>
+                <td> <a href="{{ path('admin_genders_edit',{'id': gender.id}) }}" rel="tooltip" title="Düzenle" class="btn btn-info btn-simple btn-xs">
+                        <i class="fa fa-edit"></i></a>
+                </td>
+                <td> <a href="{{ path('admin_genders_delete',{'id': gender.id}) }}"  rel="tooltip" title="Sil" class="btn btn-danger btn-simple btn-xs">
+                        <i class="fa fa-times"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_genders_new') }}"  title="Yeni kayıt" class="btn btn-primary btn-sm">Yeni oluştur</a>
+    </div>
+{% endblock %}

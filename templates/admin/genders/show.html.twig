@@ -1,0 +1,27 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block title %}Daily Shop | Kategori Görüntüle{% endblock %}
+{% block brand %}Kategori Görüntüle{% endblock %}
+{% block body %}
+    {% block m5 %}<li class="active">{% endblock %}
+
+    <div class="table-responsive ">
+        <table class="table table-hover table-striped">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gender.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ gender.Name }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('admin_genders_index') }}">Listeye geri dön</a>
+
+        <a href="{{ path('admin_genders_edit', {'id': gender.id}) }}">Düzenle</a>
+
+        {{ include('admin/genders/_delete_form.html.twig') }}
+    </div>
+    {% endblock %}

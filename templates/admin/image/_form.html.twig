@@ -1,0 +1,7 @@
+<form action="{{ path('admin_image_new',{'pid': pid}) }}" method="post" enctype="multipart/form-data">
+    Yüklemek için resim seçin(en fazla 3 adet)(Boyut: 250x300):
+
+    <! <input name="productid" type="hidden" value="{{ pid }}" type="number" readonly >
+    <input type="file" name="imageName" id="fileToUpload">
+    <input type="submit" value="Yükle" name="submit">
+</form>

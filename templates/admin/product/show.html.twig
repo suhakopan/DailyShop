@@ -1,0 +1,47 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block title %}Daily Shop | Ürün Detayı{% endblock %}
+{% block brand %}Ürün Detayı{% endblock %}
+{% block m4 %}<li class="active">{% endblock %}
+    {% block body %}
+
+        <h4>Ürün Detayları</h4>
+        <div class="table-responsive ">
+            <table class="table table-hover table-striped">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ product.id }}</td>
+                </tr>
+                <tr>
+                    <th>Kategori Numarası</th>
+                    <td>{{ product.CategoryNo }}</td>
+                </tr>
+                <tr>
+                    <th>Başlık</th>
+                    <td>{{ product.Title }}</td>
+                </tr>
+                <tr>
+                    <th>Stok Miktarı</th>
+                    <td>{{ product.Amount }}</td>
+                </tr>
+                <tr>
+                    <th>Fiyatı</th>
+                    <td>{{ product.Price }}</td>
+                </tr>
+                <tr>
+                    <th>Açıklama</th>
+                    <td>{{ product.Description }}</td>
+                </tr>
+                <tr>
+                    <th>Resimler</th>
+                    <td>
+                        <a href="javascript:openWin('{{ path('admin_image_new', {'pid': product.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,resizable=no,width=1000,height=800');">
+                            Resim Ekle
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <a href="{{ path('admin_product_index') }}">listeye dön</a>
+        </div>
+    {% endblock %}

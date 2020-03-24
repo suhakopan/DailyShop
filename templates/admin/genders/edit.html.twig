@@ -1,0 +1,12 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block title %}Daily Shop | Kategori Düzenle{% endblock %}
+{% block brand %}Kategori Düzenle{% endblock %}
+{% block m5 %}<li class="active">{% endblock %}
+
+{% block body %}
+
+    {{ include('admin/genders/_form.html.twig', {'button_label': 'Güncelle'}) }}
+
+    <a href="{{ path('admin_genders_index') }}">listeye dön</a>
+
+{% endblock %}

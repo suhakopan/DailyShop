@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('admin_genders_delete', {'id': gender.id}) }}" onsubmit="return confirm('Silmek istediğinize emin misiniz?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ gender.id) }}">
+    <button class="btn">Delete</button>
+</form>

@@ -1,0 +1,8 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block title %}Daily Shop | Ürün Ekle{% endblock %}
+{% block brand %}Ürün Ekle{% endblock %}
+{% block m4 %}<li class="active">{% endblock %}
+{% block body %}
+    {{ include('admin/product/_form.html.twig') }}
+    <a href="{{ path('admin_product_index') }}">listeye dön</a>
+{% endblock %}

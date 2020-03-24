@@ -1,0 +1,52 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block title %}Daily Shop | Ayarlar{% endblock %}
+{% block brand %}Ayarlar{% endblock %}
+{% block m7 %}<li class="active">{% endblock %}
+    {% block body %}
+
+
+        <div class="table-responsive ">
+            <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Keywords</th>
+                    <th>FirmName</th>
+                    <th>Address</th>
+                    <th>Tel</th>
+                    <th>Email</th>
+                    <th>Facebook</th>
+                    <th>Twitter</th>
+
+                    <th>Düzenle</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for setting in settings %}
+                    <tr>
+                        <td>{{ setting.id }}</td>
+                        <td>{{ setting.Title }}</td>
+                        <td>{{ setting.Description }}</td>
+                        <td>{{ setting.Keywords }}</td>
+                        <td>{{ setting.FirmName }}</td>
+                        <td>{{ setting.Address }}</td>
+                        <td>{{ setting.Tel }}</td>
+                        <td>{{ setting.Email }}</td>
+                        <td>{{ setting.Facebook }}</td>
+                        <td>{{ setting.Twitter }}</td>
+
+                        <td> <a href="{{ path('setting_edit',{'id': setting.id}) }}" rel="tooltip" title="Düzenle" class="btn btn-info btn-simple btn-xs">
+                                <i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="13">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endblock %}

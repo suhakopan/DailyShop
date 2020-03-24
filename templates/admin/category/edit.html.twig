@@ -1,0 +1,10 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block title %}Daily Shop | Alt Kategoriler{% endblock %}
+{% block brand %}Alt Kategoriler{% endblock %}
+{% block m6 %}<li class="active">{% endblock %}
+{% block body %}
+    {{ include('admin/category/_form.html.twig', {'button_label': 'Güncelle'}) }}
+
+    <a href="{{ path('admin_category_index') }}">listeye dön</a>
+
+{% endblock %}

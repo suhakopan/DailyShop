@@ -1,0 +1,22 @@
+{% block body %}
+    {% block m6 %}<li class="active">{% endblock %}
+    <form  method="post">
+        <div class="box box-info">
+            <h7>Üst Kategori Numarası ( 1: Erkek , 2: Kadın , 3: Kız Çocuk , 4: Erkek Çocuk)</h7>
+            <div class="box-body">
+                <div class="input-group">
+                    <input type="text" name="category[GenderNo]" value="{{ category.genderNo }}" class="form-control" id="inputName" placeholder="1">
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" name="category[Name]" value="{{ category.Name }}" class="form-control" id="inputName" placeholder="Ad">
+                    <span class="input-group-addon"></span>
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info">KAYDET</button>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </form>
+    {% endblock %}

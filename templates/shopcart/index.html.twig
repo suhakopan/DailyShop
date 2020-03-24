@@ -1,0 +1,19 @@
+{% extends 'frontbase.html.twig' %}
+
+
+{% block title %}   dailyShop | Sepetim    {%  endblock %}
+{% block keywords %}       {%  endblock %}
+{% block description %}    {%  endblock %}
+
+
+{% block body %}
+
+    {%  if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+        {% block body2 %}{{ include ('shopcart/_body.html.twig') }}{% endblock %}
+
+    {% else %}
+
+    {% endif %}
+
+{% endblock %}

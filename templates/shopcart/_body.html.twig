@@ -1,0 +1,76 @@
+<section id="cart-view">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {{ include ('home/_usersidebar.html.twig') }}
+            </div>
+            <div class="col-md-9">
+                <div class="cart-view-area">
+                    <div class="cart-view-table">
+                        <form action="">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Sil</th>
+                                        <th>Ürün Resmi</th>
+                                        <th>Ürün Adı</th>
+                                        <th>Fiyatı</th>
+                                        <th>Adet</th>
+                                        <th>Toplam</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% set total=0 %}
+                                    {% set tax=0.18 %}
+                                    {% for shopcart in shopcarts %}
+                                        <tr>
+                                            <td><a class="remove" href="{{ path('shopcart_delete',{'id': shopcart.sid}) }}" onclick="return confirm('Silinsin mi?');"><fa class="fa fa-close"></fa></a></td>
+                                            <td><a href="/product/{{ shopcart.id }}"><img src="{{ asset('uploads') }}/images/{{ shopcart.image_source }}" alt="img" height="45" width="55"></a></td>
+                                            <td>{{ shopcart.title }}</td>
+                                            <td>{{ shopcart.price }}₺</td>
+                                            <td>{{ shopcart.quantity }}</td>
+                                            <td>{{ shopcart.price*shopcart.quantity }}₺</td>
+                                        </tr>
+                                        {% set total=total +(shopcart.price*shopcart.quantity) %}
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="6">Sepetiniz boş!</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                        {% if total == 0 %}
+
+                        {% else %}
+                        <!-- Cart Total view -->
+                        <div class="cart-view-total">
+                            <h4>Sepet toplamı</h4>
+                            <table class="aa-totals-table">
+                                <tbody>
+                                <tr>
+                                    <th>Alışveriş Tutarı</th>
+                                    <td>{{ total }}₺</td>
+                                </tr>
+                                {% set tax=total*tax %}
+                                <tr>
+                                    <th>Vergi Ücreti</th>
+                                    <td>{{ "%.2f"|format(tax) }}₺</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <a href="{{ path('orders_new') }}" class="aa-cart-view-btn">Satın al</a>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,10 @@
+
+<h1>Yeni Resim Yükle</h1>
+
+{{ include('admin/image/_form.html.twig') }}
+
+{% for image in imageList %}
+
+    <img src="{{ asset('uploads') }}/images/{{ image.imageSource }}">
+    <a href="{{ path('admin_image_del',{'id': image.id,'pid': image.productNo}) }}" onclick="return confirm('Silinsin mi?');" rel="tooltip" title="Sil" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-times">Sil</i></a>
+{% endfor %}

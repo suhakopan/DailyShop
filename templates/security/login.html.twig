@@ -1,0 +1,68 @@
+{% extends 'frontbase.html.twig' %}
+
+
+{% block title %}   dailyShop | Giriş Yap    {%  endblock %}
+{% block keywords %}       {%  endblock %}
+{% block description %}    {%  endblock %}
+
+
+{% block body %}
+
+    {%  if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <section id="cart-view">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        {{ include ('home/_usersidebar.html.twig') }}
+                    </div>
+                    {{ include ('userpanel/show.html.twig') }}
+                </div>
+            </div>
+        </section>
+
+
+    {% else %}
+        <section id="aa-myaccount">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-myaccount-area">
+                            <div class="row">
+                                <form method="post" class="aa-login-form">
+                                    {% if error %}
+                                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                    {% endif %}
+
+                                    <h4>Giriş Yap</h4>
+                                    <label for="inputEmail">E-Posta<span>*</span></label>
+                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="E-Posta" required autofocus>
+                                    <label for="inputPassword">Şifre<span>*</span></label>
+                                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Şifre" required>
+                                    <input type="hidden" name="_csrf_token"
+                                           value="{{ csrf_token('authenticate') }}"
+                                    >
+
+                                    {#
+                                        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                        See https://symfony.com/doc/current/security/remember_me.html
+
+                                        <div class="checkbox mb-3">
+                                            <label>
+                                                <input type="checkbox" name="_remember_me"> Remember me
+                                            </label>
+                                        </div>
+                                    #}
+
+                                    <button class="btn btn-lg btn-primary" type="submit">
+                                        Giriş Yap
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    {% endif %}
+{% endblock %}

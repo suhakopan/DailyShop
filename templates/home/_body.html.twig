@@ -1,0 +1,81 @@
+<!-- Products section -->
+<section id="aa-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="aa-product-area">
+                        <div class="aa-product-inner">
+                            <ul class="nav nav-tabs aa-products-tab">
+                                <li class="active"><a href="#men" data-toggle="tab">Erkek</a></li>
+                                <li><a href="#women" data-toggle="tab">Kadın</a></li>
+                                <li><a href="#sports" data-toggle="tab">Kız Çocuk</a></li>
+                                <li><a href="#electronics" data-toggle="tab">Erkek Çocuk</a></li>
+                            </ul>
+                            <ul class="aa-product-catg">
+                                <!-- start prduct navigation -->
+                                {% for rs in products %}
+                                        <li>
+                                            <figure>
+                                                <a class="aa-product-img" href="/product/{{ rs.id }}"><img src="{{ asset('uploads') }}/images/{{ rs.image_source }}" alt="polo shirt img"></a>
+                                                <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Sepete Ekle</a>
+                                                <figcaption>
+                                                    <h4 class="aa-product-title"><a href="#">{{  rs.title }}</a></h4>
+                                                    <span class="aa-product-price">₺{{ rs.price }}</span>
+                                                </figcaption>
+                                            </figure>
+                                            <div class="aa-product-hvr-content">
+                                                <a href="#" data-toggle="tooltip" data-placement="top" title="İstek Listeme Ekle"><span class="fa fa-heart-o"></span></a>
+                                                <a href="#" data-toggle2="tooltip" data-placement="top" title="Görüntüle" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a>
+                                            </div>
+                                            <!-- product badge -->
+                                        </li>
+                                {% endfor %}
+                                    </ul>
+
+                                <!-- / latest product category -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / popular section -->
+<!-- Support section -->
+<section id="aa-support">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-support-area">
+                    <!-- single support -->
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="aa-support-single">
+                            <span class="fa fa-truck"></span>
+                            <h4>ÜCRETSİZ KARGO</h4>
+                            <P>100 TL üzeri alışverişinizde kargo ücretsiz!</P>
+                        </div>
+                    </div>
+                    <!-- single support -->
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="aa-support-single">
+                            <span class="fa fa-clock-o"></span>
+                            <h4>30 GÜNDE PARA İADESİ</h4>
+                            <P>Ürünü beğenmezseniz 30 gün içinde para iade garantisi!</P>
+                        </div>
+                    </div>
+                    <!-- single support -->
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="aa-support-single">
+                            <span class="fa fa-phone"></span>
+                            <h4>7/24 DESTEK</h4>
+                            <P>Müşteri hizmetleri 7/24 canlı destek hizmeti vermektedir!</P>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / Support section -->

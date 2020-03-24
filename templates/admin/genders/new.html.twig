@@ -1,0 +1,11 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block title %}Daily Shop | Kategoriler{% endblock %}
+{% block brand %}Kategoriler{% endblock %}
+{% block m5 %}<li class="active">{% endblock %}
+
+    {% block body %}
+
+    {{ include('admin/genders/_form.html.twig') }}
+
+    <a href="{{ path('admin_genders_index') }}">listeye dön</a>
+{% endblock %}

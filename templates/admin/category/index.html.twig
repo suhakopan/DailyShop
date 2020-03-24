@@ -1,0 +1,52 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block title %}Daily Shop | Alt Kategoriler{% endblock %}
+{% block brand %}Alt Kategoriler{% endblock %}
+{% block m6 %}<li class="active">{% endblock %}
+    {% block body %}
+
+
+        <div class="table-responsive ">
+            <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Üst Kategori</th>
+                    <th>Kategori Adı</th>
+                    <th>Oluşturma Tarihi</th>
+                    <th>Düzenle</th>
+                    <th>Sil</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        {%  if category.genderNo==1 %}
+                            <td>Erkek</td>
+                        {%  elseif category.genderNo==2 %}
+                            <td>Kadın</td>
+                        {%  elseif category.genderNo==3 %}
+                            <td>Kız Çocuk</td>
+                        {%  elseif category.genderNo==4 %}
+                            <td>Erkek Çocuk</td>
+                        {% endif %}
+                        <td>{{ category.Name }}</td>
+                        <td>{{ category.CreatedDate ? category.CreatedDate|date('d-m-Y H:i:s') : '' }}</td>
+                        <td> <a href="{{ path('admin_category_edit',{'id': category.id}) }}" rel="tooltip" title="Düzenle" class="btn btn-info btn-simple btn-xs">
+                                <i class="fa fa-edit"></i></a>
+                        </td>
+                        <td> <a href="{{ path('admin_category_delete',{'id': category.id}) }}" rel="tooltip" title="Sil" class="btn btn-danger btn-simple btn-xs">
+                                <i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">kayıt bulunamadı</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('admin_category_new') }}"  title="Yeni kayıt" class="btn btn-primary btn-sm">Yeni oluştur</a>
+        </div>
+    {% endblock %}

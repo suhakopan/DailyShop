@@ -1,0 +1,74 @@
+{% extends 'admin/adminbase.html.twig' %}
+{% block title %}Daily Shop | Sipariş Detayı{% endblock %}
+{% block brand %}Sipariş Detayı{% endblock %}
+{% block m3 %}<li class="active">{% endblock %}
+{% block body %}
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Sipariş Numarası</th>
+            <td>#{{ order.id }}</td>
+        </tr>
+        <tr>
+            <th>Müşteri Bilgisi</th>
+            <td>{{ app.user.name }}</td>
+        </tr>
+        <tr>
+            <th>Toplam Tutar</th>
+            <td>{{ order.Total }}₺</td>
+        </tr>
+        <tr>
+            <th>KDV</th>
+            <td>{{ order.Tax }}₺</td>
+        </tr>
+        <tr>
+            <th>Ödeme Tipi</th>
+            <td>{{ order.PaymentType }}</td>
+        </tr>
+        <tr>
+            <th>Sipariş Notu</th>
+            <td>{{ order.Note }}</td>
+        </tr>
+        <tr>
+            <th>Sipariş Tarihi</th>
+            <td>{{ order.CreatedAt ? order.CreatedAt|date('d-m-Y H:i:s') : '' }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Ürün Kodu</th>
+            <th>Ürün Adı</th>
+            <th>Fiyat</th>
+            <th>Adet</th>
+            <th>Toplam</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for od in orderdetail %}
+            <tr>
+                <td><a href="/product/{{ od.id }}">#{{ od.id }}</a></td>
+                <td>{{ od.Title }}</td>
+                <td>{{ od.Price }}₺</td>
+                <td>{{ od.Quantity }}</td>
+                <td>{{ od.toplam }}₺</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <b>Alışveriş Tutarı: {{ order.Total }}</b>
+    <br>
+    Sipariş Durumu:
+    {% if order.status == 0 %}
+        <b>Sipariş onaylanmadı!</b>
+        <a href="{{ path('admin_orders_update',{'id': order.id}) }}" type="submit"  rel="tooltip" title="Onayla" class="btn btn-info btn-simple btn-xs"><i class="fa fa-check-square"></i>  Onayla</a>
+
+    {% else %}
+        <b>Sipariş onaylandı!</b>
+    {% endif %}
+
+{% endblock %}

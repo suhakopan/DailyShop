@@ -1,0 +1,41 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}   Ürünler   {%  endblock %}
+{% block body %}
+    <div class="container">
+
+        <div class="aa-product-catg-content">
+            <div class="aa-product-catg-body">
+                {% for rs in products %}
+                    <ul class="aa-product-catg">
+                        <!-- start single product item -->
+                        <li>
+                            <figure>
+                                <a class="aa-product-img" href="/product/{{ rs.id }}"><img src="{{ asset('uploads') }}/images/{{ rs.image_source }}" alt="polo shirt img"></a>
+                                <form name="shopcart" action="{{ path('shopcart_new') }}" method="post">
+                                    <input type="hidden" name="shopcart[quantity]" value="1">
+                                    <input type="hidden" name="shopcart[productid]" value="{{ rs.id }}">
+                                    <input type="hidden" name="token" value="{{ csrf_token('add-item') }}">
+                                    <button class="aa-add-card-btn" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;<span class="fa fa-shopping-cart"></span>Sepete Ekle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                </form>
+                               <!-- <a class="aa-add-card-btn"href="#"><span class="fa fa-shopping-cart"></span>Sepete Ekle</a> -->
+                                <figcaption>
+                                    <h4 class="aa-product-title"><a href="#">{{ rs.title }}</a></h4>
+                                    <span class="aa-product-price">₺{{ rs.price }}</span><span class="aa-product-price"></span>
+
+                                </figcaption>
+                            </figure>
+                            <!-- product badge -->
+                        </li>
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{%  endblock %}
+
+
+

@@ -1,0 +1,59 @@
+{% block body %}
+    {% block m4 %}<li class="active">{% endblock %}
+    {% include('admin/messages.html.twig') %}
+    <form  method="post">
+        <div class="box box-info">
+            <h4>Ürün Bilgileri</h4>
+            <div class="box-body">
+                <div class="input-group">
+                    <input type="text" name="product[Title]" value="{{ product.Title }}" class="form-control" id="inputName" placeholder="Başlık giriniz">
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <div class="form-group">
+                    <select name="product[CategoryNo]"  class="form-control">
+                        {%  if (catname) %}
+                        <option value="{{ product.categoryNo }}">{{ catname[0].name }} </option>
+                        {% endif %}
+                        {% for cat in catlist %}
+                            {% if cat.genderNo == 1 %}
+                                <option value="{{ cat.id }}">Erkek {{ cat.name }}</option>
+                            {% elseif cat.genderNo == 2 %}
+                                <option value="{{ cat.id }}">Kadın {{ cat.name }}</option>
+                            {% elseif cat.genderNo == 3 %}
+                                <option value="{{ cat.id }}">Kız Çocuk {{ cat.name }}</option>
+                            {% elseif cat.genderNo == 4 %}
+                                <option value="{{ cat.id }}">Erkek Çocuk {{ cat.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    <span class="input-group-addon"></span>
+                    </select>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" name="product[Amount]" value="{{ product.Amount }}" class="form-control" id="inputSurname"placeholder="Miktar giriniz...">
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <div class="input-group">
+                    <input type="text" name="product[Price]" value="{{ product.Price }}" class="form-control" id="inputSurname"placeholder="Fiyat giriniz...">
+                    <span class="input-group-addon"></span>
+                </div>
+                <br>
+                <h4>Açıklama</h4>
+                <div class="input-group">
+                    <textarea class="form-control" name="product[Description]" rows="3" placeholder="Ürün açıklaması..." id="inputAdress">{{ product.Description }}</textarea>
+                    <span class="input-group-addon"></span>
+                </div>
+               <br>
+                <br>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info">KAYDET</button>
+                    <button type="" class="btn btn-default">İPTAL</button>
+                </div>
+            </div>
+            <!-- /.box-body -->
+
+        </div>
+    </form>
+    {% endblock %}
